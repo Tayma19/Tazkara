@@ -45,7 +45,7 @@ const Home = () => {
     return <div className="text-white text-center py-20">جاري التحميل...</div>;
   }
 
-  // دالة مساعدة لإعادة استخدام إعدادات السويبر
+  
   const swiperConfig = {
     modules: [Navigation, Pagination, Autoplay],
     navigation: true,
@@ -67,7 +67,7 @@ const Home = () => {
 
   return (
     <>
-      {/* نفس الـ style السابق لضبط overflow */}
+      
       <style>{`
         .swiper, .swiper-wrapper, .swiper-slide { overflow: visible !important; }
         .swiper-button-next, .swiper-button-prev { z-index: 20; }
@@ -75,7 +75,7 @@ const Home = () => {
         .custom-slider { overflow: visible !important; padding-bottom: 2rem; }
       `}</style>
 
-      {/* Hero Section */}
+      
       <div className="relative w-full h-[400px] md:h-[500px] ">
         <img src={heroImage} alt="Hero" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white text-center px-4">
@@ -92,14 +92,14 @@ const Home = () => {
         </div>
       </div>
 
-      {/* قسم الأفلام الرائجة */}
+     
       <div ref={trendingRef} className="container mx-auto px-4 py-12 ">
         <div className="flex justify-between items-center mb-4">
-        {/* الرابط على اليسار */}
+       
          <a href="/movies"  className="text-red-800 pt-10 hover:text-red-300 transition text-sm">
            مشاهدة الكل 
          </a>
-           {/* العنوان على اليمين */}
+         
           <h2 className="text-white text-3xl font-bold">: أفلام رائجة</h2>
         </div>
         <Swiper {...swiperConfig}>
@@ -111,7 +111,7 @@ const Home = () => {
         </Swiper>
       </div>
 
-      {/* قسم المسلسلات الرائجة */}
+      
       <div className="container mx-auto px-4 py-12">
        <div className="flex justify-between items-center mb-6">
   <a href="/tv" className="text-red-800 pt-10 hover:text-red-300 transition text-sm">

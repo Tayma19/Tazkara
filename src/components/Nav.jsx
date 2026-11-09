@@ -9,15 +9,13 @@ const Nav = () => {
   const [loading, setLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
-  const navRef = useRef(null);       // مرجع لعنصر الـ Nav
+  const navRef = useRef(null);
   const navigate = useNavigate();
 
-  // تغيير عنوان التبويب
   useEffect(() => {
     document.title = "تذكرة | أفلام ومسلسلات";
   }, []);
 
-  // 🔧 حل مشكلة تغطية المحتوى: ضبط padding-top للـ body حسب ارتفاع الـ Nav
   useEffect(() => {
     const updatePaddingTop = () => {
       if (navRef.current) {
@@ -25,13 +23,11 @@ const Nav = () => {
         document.body.style.paddingTop = `${navHeight}px`;
       }
     };
-
     updatePaddingTop();
     window.addEventListener('resize', updatePaddingTop);
     return () => window.removeEventListener('resize', updatePaddingTop);
   }, []);
 
-  // إغلاق النتائج عند النقر خارج مربع البحث
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -42,7 +38,6 @@ const Nav = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // البحث عند تغيير النص
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if (searchInput.trim()) {
@@ -100,10 +95,56 @@ const Nav = () => {
       className="bg-[#0C0C0C] text-white p-2 md:p-4 shadow-lg fixed top-0 left-0 right-0 z-50"
     >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
-        {/* Logo + Title + Links */}
-        
+       
+        <div dir="ltr" className="flex items-center gap-6">
+          <NavLink
+            to="/home"
+            className="flex items-center gap-2 text-2xl font-bold text-red-800 hover:text-red-600 transition"
+          >
+            <img
+              src={logo}
+              alt="تذكرة"
+              className="h-8 w-auto md:h-10 lg:h-12 transition-all"
+            />
+          </NavLink>
 
-        {/* Search Form with Dropdown */}
+          <div className="flex gap-6">
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+              }
+            >
+              الرئيسية
+            </NavLink>
+            <NavLink
+              to="/movies"
+              className={({ isActive }) =>
+                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+              }
+            >
+              أفلام
+            </NavLink>
+            <NavLink
+              to="/tv"
+              className={({ isActive }) =>
+                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+              }
+            >
+              مسلسلات
+            </NavLink>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+              }
+            >
+              المفضلة
+            </NavLink>
+          </div>
+        </div>
+
+        
         <div className="relative w-full max-w-md" ref={searchRef}>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <input
@@ -155,55 +196,6 @@ const Nav = () => {
               )}
             </div>
           )}
-        </div>
-        <div dir="rtl" className="flex items-center gap-6">
-          <NavLink
-            to="/home"
-            className="flex items-center gap-2 text-2xl font-bold text-red-800 hover:text-red-600 transition"
-          >
-            <img
-              src={logo}
-              alt="تذكرة"
-              className="h-8 w-auto md:h-10 lg:h-12 transition-all"
-            />
-          
-
-          </NavLink>
-
-          <div className="flex gap-6">
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              الرئيسية
-            </NavLink>
-            <NavLink
-              to="/movies"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              أفلام
-            </NavLink>
-            <NavLink
-              to="/tv"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              مسلسلات
-            </NavLink>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              المفضلة
-            </NavLink>
-          </div>
         </div>
       </div>
     </div>

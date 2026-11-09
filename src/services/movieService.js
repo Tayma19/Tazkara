@@ -98,7 +98,7 @@ getTvSeasonDetails: async (tvId, seasonNumber) => {
  searchMulti: (query) => {
   return api.get(`/search/multi`, { params: { query } }).then(res => res.data);
 },
-// داخل كائن movieService، أضف هذه الدالة الجديدة
+
 searchTv: (query) => {
   return api.get(`/search/tv`, { params: { query } }).then(res => res.data);
 },

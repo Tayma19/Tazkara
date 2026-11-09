@@ -5,9 +5,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ======================= */
-/*  إصلاح overflow للسلايدرات */
-/* ======================= */
+
 .swiper,
 .swiper-wrapper,
 .swiper-slide {
@@ -17,12 +15,9 @@
 .custom-slider {
   overflow: visible !important;
   padding-bottom: 2rem;
-   /* مساحة للنقاط السفلية */
+  
 }
 
-/* ======================= */
-/*  تخصيص أسهم السلايدر (موحد للكل) */
-/* ======================= */
 .custom-slider .swiper-button-next,
 .custom-slider .swiper-button-prev {
   color: #b91c1c !important;
@@ -33,7 +28,7 @@
   transition: all 0.3s;
 }
 .custom-slider {
-  padding-bottom: 3rem !important; /* مساحة كافية للنقاط */
+  padding-bottom: 3rem !important; 
 }
 
 .custom-slider .swiper-button-next:hover,
@@ -48,9 +43,7 @@
   font-weight: bold;
 }
 
-/* ======================= */
-/*  تخصيص النقاط السفلية (pagination) */
-/* ======================= */
+
 .custom-slider .swiper-pagination-bullet {
   background-color: #9ca3af !important;
   opacity: 0.6;

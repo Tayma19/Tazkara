@@ -6,9 +6,9 @@ function Fotter() {
       <div className="max-w-6xl mx-auto px-4">
         <p>&copy; 2026 جميع الحقوق محفوظة</p>
         <div className="mt-3 flex justify-center gap-4">
-          <a href="#" className="hover:text-red-500 transition">الشروط</a>
-          <a href="#" className="hover:text-red-500 transition">الخصوصية</a>
-          <a href="#" className="hover:text-red-500 transition">المساعدة</a>
+          <a href="/terms" className="hover:text-red-500 transition">الشروط</a>
+<a href="/privacy" className="hover:text-red-500 transition">الخصوصية</a>
+<a href="/help" className="hover:text-red-500 transition">المساعدة</a>
         </div>
       </div>
     </footer>

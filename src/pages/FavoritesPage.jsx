@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { movieService } from '../services/movieService';
 
 const FavoritesPage = () => {
-  const [activeTab, setActiveTab] = useState('movies'); // 'movies' or 'tv'
+  const [activeTab, setActiveTab] = useState('movies'); 
   const [favoriteMoviesIds, setFavoriteMoviesIds] = useState([]);
   const [favoriteTvIds, setFavoriteTvIds] = useState([]);
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,7 @@ const FavoritesPage = () => {
   const [loadingMovies, setLoadingMovies] = useState(false);
   const [loadingTv, setLoadingTv] = useState(false);
 
-  // تحميل المعرفات من localStorage عند تحميل الصفحة
+  
   useEffect(() => {
     const moviesIds = JSON.parse(localStorage.getItem('favorites_movies') || '[]');
     const tvIds = JSON.parse(localStorage.getItem('favorites_tv') || '[]');
@@ -19,7 +19,7 @@ const FavoritesPage = () => {
     setFavoriteTvIds(tvIds);
   }, []);
 
-  // جلب تفاصيل الأفلام المفضلة
+ 
   useEffect(() => {
     const fetchMovies = async () => {
       if (favoriteMoviesIds.length === 0) {
@@ -41,7 +41,7 @@ const FavoritesPage = () => {
     fetchMovies();
   }, [favoriteMoviesIds]);
 
-  // جلب تفاصيل المسلسلات المفضلة
+  
   useEffect(() => {
     const fetchTv = async () => {
       if (favoriteTvIds.length === 0) {
@@ -63,22 +63,22 @@ const FavoritesPage = () => {
     fetchTv();
   }, [favoriteTvIds]);
 
-  // إزالة فيلم من المفضلة
+ 
   const removeMovie = (movieId) => {
     const newIds = favoriteMoviesIds.filter(id => id !== movieId);
     localStorage.setItem('favorites_movies', JSON.stringify(newIds));
     setFavoriteMoviesIds(newIds);
-    // لا نحتاج لتحديث movies يدوياً لأن useEffect سيعيد الجلب
+   
   };
 
-  // إزالة مسلسل من المفضلة
+  
   const removeTv = (tvId) => {
     const newIds = favoriteTvIds.filter(id => id !== tvId);
     localStorage.setItem('favorites_tv', JSON.stringify(newIds));
     setFavoriteTvIds(newIds);
   };
 
-  // دالة مساعدة لعرض البطاقات (أفلام أو مسلسلات)
+  
   const renderGrid = (items, type, onRemove) => {
     if (items.length === 0) {
       return (
@@ -128,7 +128,7 @@ const FavoritesPage = () => {
     <div dir="rtl" className="container mx-auto px-4 py-8 text-white">
       <h1 className="text-3xl font-bold mb-6 text-center">المفضلة</h1>
 
-      {/* تبويبات */}
+      
       <div className="flex justify-center gap-4 mb-8 border-b border-gray-700 pb-2">
         <button
           onClick={() => setActiveTab('movies')}
@@ -152,7 +152,7 @@ const FavoritesPage = () => {
         </button>
       </div>
 
-      {/* محتوى التبويب النشط */}
+     
       <div className="mt-4">
         {activeTab === 'movies' && (
           <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { movieService } from "../services/movieService";
-import MediaCard from "../components/MediaCard"; // مكون يعرض بوستر + عنوان + نوع (فيلم/مسلسل)
+import MediaCard from "../components/MediaCard"; 
 import { Link } from "react-router-dom";
 
 const SearchBar = () => {
@@ -8,10 +8,10 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("movies"); // "movies" أو "tv"
+  const [activeTab, setActiveTab] = useState("movies"); 
   const searchRef = useRef(null);
 
-  // إغلاق النتائج عند النقر خارج مربع البحث
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -22,7 +22,7 @@ const SearchBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // تنفيذ البحث عند تغيير النص أو التبويب
+ 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (query.trim()) {
@@ -63,7 +63,7 @@ const SearchBar = () => {
 
   return (
     <div className="relative w-full max-w-md" ref={searchRef}>
-      {/* حقل الإدخال والأزرار */}
+     
       <div className="flex items-center bg-gray-800 rounded-lg overflow-hidden">
         <input
           type="text"
@@ -78,7 +78,7 @@ const SearchBar = () => {
         )}
       </div>
 
-      {/* تبويبات الأفلام والمسلسلات (تظهر فقط عندما يكون مربع البحث مفتوحاً أو هناك نتائج) */}
+     
       {isOpen && (
         <div className="absolute left-0 right-0 mt-1 bg-[#151515] rounded-lg shadow-xl z-50">
           <div className="flex border-b border-gray-700">

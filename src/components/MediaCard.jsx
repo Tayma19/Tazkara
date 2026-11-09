@@ -11,9 +11,9 @@ const year = (type === 'movie' ? item.release_date : item.first_air_date)?.slice
 
   return (
     <Link to={`/${type}/${item.id}`}>
-      {/* لا يوجد عرض ثابت، الحاوية تأخذ كامل مساحة الشريحة */}
+     
       <div className="bg-[#0C0C0C] rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl hover:shadow-red-900/30">
-        {/* حاوية بنسبة ارتفاع 150% من العرض (نسبة 2:3) */}
+       
         <div className="relative pt-[150%] overflow-hidden">
           <img
             src={posterUrl}

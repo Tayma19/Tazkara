@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom'; // 🔥 إضافة Link
+import { useSearchParams, Link } from 'react-router-dom'; 
 import { movieService } from '../services/movieService';
 import MediaCard from '../components/MediaCard';
 
@@ -125,7 +125,7 @@ const MoviesPage = () => {
         <p className="text-gray-400 text-sm">{movie.release_date?.slice(0, 4)}</p>
         <p className="text-gray-300 text-sm line-clamp-2 mt-1">{movie.overview}</p>
       </div>
-      {/* التقييم وزر التفاصيل في نفس الصف */}
+    
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center gap-1  px-2 py-1 rounded">
           <span className="text-yellow-500">⭐</span>

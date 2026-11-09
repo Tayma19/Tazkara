@@ -19,7 +19,7 @@ const useMovieStore = create((set, get) => ({
   totalPages: 1,
   searchQuery: '',
   
-  // Actions
+  
   fetchPopularMovies: async (page = 1) => {
     set({ loading: true, error: null });
     try {
@@ -58,7 +58,7 @@ const useMovieStore = create((set, get) => ({
       const response = await getMovieDetails(id);
       set({ selectedMovie: response.data, loading: false });
       
-      // جلب التريلر بعد التفاصيل
+    
       await get().fetchMovieTrailer(id);
     } catch (error) {
       set({ error: error.message, loading: false });

@@ -7,14 +7,16 @@ import MovieDetails from './pages/MovieDetails';
 import MoviesPage from './pages/MoviesPage';
 import TvPage from './pages/TvPage';
 import TvDetails from './pages/TvDetails';
-
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Help from './pages/Help';
 function App() {
   return (
     <BrowserRouter>
-      {/* حاوية رئيسية تأخذ كامل ارتفاع الشاشة وتستخدم flex باتجاه العمود */}
+     
       <div className="min-h-screen bg-[#151515] overflow-x-hidden flex flex-col">
         <Nav />
-        {/* المحتوى يأخذ كل المساحة المتبقية ليدفع الـ Footer للأسفل */}
+      
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />  
@@ -24,6 +26,9 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/movie/:id" element={<MovieDetails />} />
             <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/help" element={<Help />} />
           </Routes>
         </div>
         <Fotter />

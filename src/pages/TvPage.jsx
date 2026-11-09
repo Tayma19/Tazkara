@@ -17,7 +17,7 @@ const TvPage = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+  const [viewMode, setViewMode] = useState('grid'); 
 
   const fetchTvShows = async (tabId, pageNum = 1, reset = true) => {
     setLoading(true);
@@ -80,7 +80,7 @@ const TvPage = () => {
         </div>
       </div>
 
-      {/* تبويبات */}
+      
       <div className="flex flex-wrap justify-end gap-1 mb-8 border-b border-gray-700 pb-2">
         {tabs.map(tab => (
           <button
@@ -97,7 +97,7 @@ const TvPage = () => {
         ))}
       </div>
 
-      {/* عرض المسلسلات حسب viewMode */}
+      
       {loading && tvShows.length === 0 ? (
         <div className="flex justify-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-red-800"></div>
@@ -111,7 +111,7 @@ const TvPage = () => {
               ))}
             </div>
           ) : (
-            // عرض القائمة (مشابه للأفلام ولكن مع مسلسلات)
+            
             <div className="flex flex-col gap-3">
               {tvShows.map(show => (
                 <div key={show.id} className="bg-[#0C0C0C] border border-red-800 rounded-lg overflow-hidden hover:bg-gray-700 transition flex items-center gap-4 p-3">
@@ -144,7 +144,7 @@ const TvPage = () => {
             </div>
           )}
 
-          {/* زر تحميل المزيد */}
+        
           {hasMore && (
             <div className="flex justify-center mt-8">
               <button

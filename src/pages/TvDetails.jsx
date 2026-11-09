@@ -146,7 +146,7 @@ const TvDetails = () => {
 
   return (
     <div dir="rtl" className="text-white">
-      {/* Hero Section - صورة على اليسار، تفاصيل على اليمين */}
+      
       <div className="relative w-full min-h-[70vh] md:min-h-[80vh]">
         <img
           src={`https://image.tmdb.org/t/p/original${tv.backdrop_path || tv.poster_path}`}
@@ -155,7 +155,7 @@ const TvDetails = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
         
-        {/* الحاوية المعدلة: dir="ltr" لعكس الترتيب ثم إعادة dir="rtl" للنص */}
+      
         <div className="relative z-10 container mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row gap-8 items-end md:items-center justify-center min-h-[70vh]" dir="ltr">
           <img
             src={`https://image.tmdb.org/t/p/w300${tv.poster_path}`}
@@ -213,7 +213,7 @@ const TvDetails = () => {
         </div>
       </div>
 
-      {/* باقي الأقسام (لم تتغير، وهي سليمة) */}
+     
       {showTrailer && trailerKey && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setShowTrailer(false)}>
           <div className="relative w-full max-w-4xl aspect-video" onClick={(e) => e.stopPropagation()}>

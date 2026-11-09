@@ -71,7 +71,7 @@ const MovieDetails = () => {
           }
         }
         
-        // الكود الجديد (متوافق مع صفحة المفضلة)
+       
 const favorites = JSON.parse(localStorage.getItem('favorites_movies') || '[]');
 localStorage.setItem('favorites_movies', JSON.stringify(newFavorites));
         
@@ -84,10 +84,10 @@ localStorage.setItem('favorites_movies', JSON.stringify(newFavorites));
     fetchDetails();
   }, [id]);
 
- // داخل MovieDetails component
+ 
 const toggleFavorite = () => {
   if (!movie) return;
-  // استخدم المفتاح favorites_movies للأفلام
+ 
   const favorites = JSON.parse(localStorage.getItem('favorites_movies') || '[]');
   let newFavorites;
   if (isFavorite) {
@@ -134,7 +134,7 @@ const toggleFavorite = () => {
 
   return (
     <div className="text-white">
-      {/* Hero Section */}
+      
       <div className="relative w-full min-h-[70vh] md:min-h-[80vh]">
         <img
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path || movie.poster_path}`}
@@ -180,7 +180,7 @@ const toggleFavorite = () => {
             <p className="text-gray-200 max-w-3xl text-base md:text-lg leading-relaxed">
               {movie.overview}
             </p>
-            {/* روابط خارجية */}
+           
             {(movie.homepage || movie.imdb_id) && (
               <div className="flex gap-3 mt-3 justify-end text-sm">
                 {movie.homepage && (
@@ -191,11 +191,11 @@ const toggleFavorite = () => {
                 )}
               </div>
             )}
-            {/* معلومات السلسلة (belongs_to_collection) */}
+           
             {movie.belongs_to_collection && (
               <div className="mt-4 bg-gray-800/50 p-3 rounded-lg text-right">
                 <p>   هذا الفيلم جزء من سلسلة : <strong>{movie.belongs_to_collection.name}</strong></p>
-                {/* يمكن إضافة رابط للسلسلة مستقبلاً */}
+              
               </div>
             )}
             <div className="flex gap-3 mt-6 justify-end">
@@ -212,9 +212,7 @@ const toggleFavorite = () => {
         </div>
       </div>
 
-      {/* Modal trailer (نفسه) */}
-
-      {/* طاقم التمثيل */}
+      
       <div className="container mx-auto px-4 py-12">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-right border-r-4 border-red-800 pr-4">طاقم التمثيل</h2>
         <Swiper
@@ -251,7 +249,7 @@ const toggleFavorite = () => {
         </Swiper>
       </div>
 
-      {/* شركات الإنتاج */}
+     
       {movie.production_companies?.length > 0 && (
         <div className="container mx-auto px-4 py-8">
           <h2 className="text-2xl font-bold mb-4 text-right border-r-4 border-red-800 pr-4">شركات الإنتاج</h2>
@@ -270,7 +268,7 @@ const toggleFavorite = () => {
         </div>
       )}
 
-      {/* أفلام مشابهة */}
+     
 {similar.length > 0 && (
   <div className="container mx-auto px-4 py-12">
     <h2 className="text-lg md:text-xl font-bold mb-3 text-right border-r-4 border-red-800 pr-3">أفلام مشابهة</h2>
