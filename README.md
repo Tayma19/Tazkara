@@ -14,7 +14,7 @@ Tazkara is a simple web app to browse trending movies and TV shows, search, and 
 - React 18, React Router, TailwindCSS, Swiper.js, TMDB API, Vite
 
 ## How to run locally
-1. Clone: `git clone https://github.com/Tayma18/tazkara.git`
+1. Clone: `git clone https://github.com/Tayma19/tazkara.git`
 2. `cd tazkara`
 3. `npm install`
 4. Get API key from [TMDB](https://www.themoviedb.org/) and create `.env` file:
