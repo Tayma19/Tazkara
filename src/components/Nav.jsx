@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { movieService } from '../services/movieService';
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from '../assets/images/logoo.png';
+import logo from '../assets/images/tazkara-logo.svg';
 
 const Nav = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -88,118 +88,119 @@ const Nav = () => {
   };
 
   const noImageSrc = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='138' viewBox='0 0 92 138'%3E%3Crect width='92' height='138' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='12'%3ENo Image%3C/text%3E%3C/svg%3E";
-
-  return (
+return (
+  <div
+    ref={navRef}
+    className="bg-[#0C0C0C] text-white py-2 px-3 md:py-4 md:px-6 shadow-lg fixed top-0 left-0 right-0 z-50"
+  >
     <div
-      ref={navRef}
-      className="bg-[#0C0C0C] text-white p-2 md:p-4 shadow-lg fixed top-0 left-0 right-0 z-50"
+      dir="ltr"
+      className="w-full flex flex-col md:flex-row justify-between items-center gap-3"
     >
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
-       
-        <div dir="ltr" className="flex items-center gap-6">
+      
+      <div className="flex items-center gap-6">
+        <NavLink
+          to="/home"
+          className="flex items-center gap-2 text-2xl font-bold text-red-800 hover:text-red-600 transition"
+        >
+          <img
+            src={logo}
+            alt="تذكرة"
+            className="h-8 w-auto md:h-10 lg:h-12 transition-all"
+          />
+        </NavLink>
+
+        <div className="flex gap-6">
           <NavLink
             to="/home"
-            className="flex items-center gap-2 text-2xl font-bold text-red-800 hover:text-red-600 transition"
+            className={({ isActive }) =>
+              `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+            }
           >
-            <img
-              src={logo}
-              alt="تذكرة"
-              className="h-8 w-auto md:h-10 lg:h-12 transition-all"
-            />
+            الرئيسية
           </NavLink>
-
-          <div className="flex gap-6">
-            <NavLink
-              to="/home"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              الرئيسية
-            </NavLink>
-            <NavLink
-              to="/movies"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              أفلام
-            </NavLink>
-            <NavLink
-              to="/tv"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              مسلسلات
-            </NavLink>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
-              }
-            >
-              المفضلة
-            </NavLink>
-          </div>
-        </div>
-
-        
-        <div className="relative w-full max-w-md" ref={searchRef}>
-          <form onSubmit={handleSubmit} className="flex gap-2">
-            <input
-              type="text"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              onFocus={() => searchInput.trim() && setShowResults(true)}
-              placeholder="...ابحث عن فيلم أو مسلسل"
-              className="flex-1 px-4 py-2 rounded-lg bg-gray-700 text-white text-right placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-red-800"
-            />
-          </form>
-
-          {showResults && (
-            <div className="absolute left-0 right-0 mt-2 bg-gray-800 rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto">
-              {loading ? (
-                <div className="p-4 text-center text-gray-400">جاري البحث...</div>
-              ) : results.length > 0 ? (
-                <div className="py-2">
-                  {results.map((item) => (
-                    <div
-                      key={item.id}
-                      onClick={() => handleItemClick(item)}
-                      className="flex items-center gap-3 p-3 hover:bg-gray-700 cursor-pointer transition border-b border-gray-700 last:border-0"
-                    >
-                      <img
-                        src={item.poster_path ? `https://image.tmdb.org/t/p/w92${item.poster_path}` : noImageSrc}
-                        alt={item.title || item.name}
-                        className="w-12 h-16 object-cover rounded"
-                      />
-                      <div className="flex-1 text-right">
-                        <p className="font-semibold">{item.title || item.name}</p>
-                        <div className="flex justify-end gap-2 text-xs text-gray-400">
-                          <span>
-                            {item.media_type === 'movie'
-                              ? (item.release_date?.slice(0, 4) || 'فيلم')
-                              : (item.first_air_date?.slice(0, 4) || 'مسلسل')
-                            }
-                          </span>
-                          <span className="bg-red-800/50 px-1 rounded">
-                            {item.media_type === 'movie' ? 'فيلم' : 'مسلسل'}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="p-4 text-center text-gray-400">لا توجد نتائج</div>
-              )}
-            </div>
-          )}
+          <NavLink
+            to="/movies"
+            className={({ isActive }) =>
+              `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+            }
+          >
+            أفلام
+          </NavLink>
+          <NavLink
+            to="/tv"
+            className={({ isActive }) =>
+              `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+            }
+          >
+            مسلسلات
+          </NavLink>
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              `transition ${isActive ? 'text-red-800' : 'hover:text-red-800'}`
+            }
+          >
+            المفضلة
+          </NavLink>
         </div>
       </div>
-    </div>
-  );
-};
 
+      
+      <div dir="rtl" className="relative w-full md:w-80 lg:w-96" ref={searchRef}>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onFocus={() => searchInput.trim() && setShowResults(true)}
+            placeholder="ابحث عن فيلم أو مسلسل..."
+            className="flex-1 px-4 py-2 rounded-lg bg-gray-700 text-white text-right placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-red-800"
+          />
+        </form>
+
+        {showResults && (
+          <div className="absolute left-0 right-0 mt-2 bg-gray-800 rounded-lg shadow-xl z-50 max-h-96 overflow-y-auto">
+            {loading ? (
+              <div className="p-4 text-center text-gray-400">جاري البحث...</div>
+            ) : results.length > 0 ? (
+              <div className="py-2">
+                {results.map((item) => (
+                  <div
+                    key={item.id}
+                    onClick={() => handleItemClick(item)}
+                    className="flex items-center gap-3 p-3 hover:bg-gray-700 cursor-pointer transition border-b border-gray-700 last:border-0"
+                  >
+                    <img
+                      src={item.poster_path ? `https://image.tmdb.org/t/p/w92${item.poster_path}` : noImageSrc}
+                      alt={item.title || item.name}
+                      className="w-12 h-16 object-cover rounded"
+                    />
+                    <div className="flex-1 text-right">
+                      <p className="font-semibold">{item.title || item.name}</p>
+                      <div className="flex justify-end gap-2 text-xs text-gray-400">
+                        <span>
+                          {item.media_type === 'movie'
+                            ? (item.release_date?.slice(0, 4) || 'فيلم')
+                            : (item.first_air_date?.slice(0, 4) || 'مسلسل')
+                          }
+                        </span>
+                        <span className="bg-red-800/50 px-1 rounded">
+                          {item.media_type === 'movie' ? 'فيلم' : 'مسلسل'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-4 text-center text-gray-400">لا توجد نتائج</div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+);
+};
 export default Nav;

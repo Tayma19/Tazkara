@@ -6,6 +6,15 @@
 @custom-variant dark (&:is(.dark *));
 
 
+html,
+body {
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+}
+
 .swiper,
 .swiper-wrapper,
 .swiper-slide {
@@ -14,8 +23,7 @@
 
 .custom-slider {
   overflow: visible !important;
-  padding-bottom: 2rem;
-  
+  padding-bottom: 3rem !important;
 }
 
 .custom-slider .swiper-button-next,
@@ -26,9 +34,6 @@
   height: 32px !important;
   border-radius: 50%;
   transition: all 0.3s;
-}
-.custom-slider {
-  padding-bottom: 3rem !important; 
 }
 
 .custom-slider .swiper-button-next:hover,
@@ -43,11 +48,9 @@
   font-weight: bold;
 }
 
-
 .custom-slider .swiper-pagination-bullet {
   background-color: #9ca3af !important;
   opacity: 0.6;
-
 }
 
 .custom-slider .swiper-pagination-bullet-active {
